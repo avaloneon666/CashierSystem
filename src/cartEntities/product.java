@@ -1,3 +1,11 @@
+/*
+Created by: Jorge Avalos
+Date: 2/1/2020
+Description of Class:
+This class will create the product object with its properties.
+ */
+
+
 package cartEntities;
 
 public class product {
@@ -5,7 +13,6 @@ public class product {
     private String taxID;
     private int productQuantity;
     private double productPrice, productTax, productFinalSale;
-
 
     public product() {
     }
@@ -15,7 +22,7 @@ public class product {
         this.taxID = taxID;
         this.productQuantity = productQuantity;
         this.productPrice = productPrice;
-        this.productTax = productPrice;
+        this.productTax = productTax;
         this.productFinalSale = productFinalSale;
     }
 
