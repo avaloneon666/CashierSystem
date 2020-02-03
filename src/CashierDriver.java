@@ -43,9 +43,11 @@ public class CashierDriver {
         }
         if (mainSelection == 0) {
             cartWorker checkoutCart = new cartWorker();
+            double a = (checkoutCart.roundUptoNearest5cents(1.49));
+
             List<product> finalCart = checkoutCart.cartBuilder();
             for (product product : finalCart) {
-                dialogueBox += (product.getProductQuantity() + " " + product.getProductName() + ":  $" + decimalFormat.format(product.getProductFinalSale()) + "\n");
+                dialogueBox = dialogueBox + (product.getProductQuantity() + " " + product.getProductName() + ":  $" + decimalFormat.format(product.getProductFinalSale()) + "\n");
                 totalTax += product.getProductTax();
                 totalSale += product.getProductFinalSale();
             }
@@ -71,7 +73,7 @@ public class CashierDriver {
      */
     public static List<product> writeReceipt(List<product> prod, double totalTax, double totalSale) throws IOException {
         String bufferedString = "";
-        BufferedWriter bufferedWriter = null;
+        BufferedWriter bufferedWriter;
         DecimalFormat decimalFormat = new DecimalFormat(".00");
         fileChooser fileChooser = new fileChooser();
         File file = new File(fileChooser.fileSave() + ".txt");
@@ -79,7 +81,7 @@ public class CashierDriver {
         FileWriter fileWriter = new FileWriter(file);
         bufferedWriter = new BufferedWriter(fileWriter);
         for (product product : prod) {
-            bufferedString += ((product.getProductQuantity() + " " + product.getProductName() + ":  $" + decimalFormat.format(product.getProductFinalSale()) + "\n"));
+            bufferedString = bufferedString + ((product.getProductQuantity() + " " + product.getProductName() + ":  $" + decimalFormat.format(product.getProductFinalSale()) + "\n"));
         }
         bufferedString += ("Total Tax: $" + decimalFormat.format(totalTax) + "\n");
         bufferedString += ("Total Sale: $" + decimalFormat.format(totalSale));

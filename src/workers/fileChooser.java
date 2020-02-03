@@ -6,6 +6,7 @@ This class is the file manager of the program,  it will allow the user to look f
  */
 
 package workers;
+
 import javax.swing.*;
 import java.io.File;
 
@@ -23,7 +24,6 @@ public class fileChooser {
 
         return null;
     }
-
 
     //fileSave method allows the user to both select the save destination of the file as well as name the file.
     public String fileSave() {

@@ -45,11 +45,13 @@ public class cartWorker {
             System.out.println("The file could not be found");
             cartBuilder();
         } catch (IOException | NullPointerException e) {
+            e.addSuppressed(e);
         } finally {
             if (bufferedReader != null) {
                 try {
                     bufferedReader.close();
                 } catch (IOException e) {
+                    e.addSuppressed(e);
                 }
 
             }
@@ -65,16 +67,14 @@ public class cartWorker {
      */
     public List<product> salesTax(List<product> finalCart) {
         double importTax = .05;
-        double salesTax = .1;
+        double salesTax = .10;
         for (product product : finalCart) {
             if (product.getTaxID().contains("I")) {
-                product.setProductTax((product.getProductTax() + (product.getProductPrice() * importTax)));
+                product.setProductTax(roundUptoNearest5cents((product.getProductTax() + (product.getProductPrice() * importTax))));
             }
-            product.setProductTax(Math.round(product.getProductTax() * 10) / 10.0);
             if (product.getTaxID().contains("T")) {
-                product.setProductTax((product.getProductTax() + (product.getProductPrice() * salesTax)));
+                product.setProductTax(roundUptoNearest5cents((product.getProductTax() + (product.getProductPrice() * salesTax))));
             }
-            product.setProductTax(Math.round(product.getProductTax() * 10) / 10.0);
             product.setProductFinalSale(product.getProductTax() + product.getProductPrice());
         }
         return finalCart;
@@ -98,6 +98,28 @@ public class cartWorker {
         }
         if (isTaxable) taxID += "T";
         prod.setTaxID(taxID);
+    }
+
+    /*
+    roundUptoNearest5cents will round to the nearest 5 cents as stated in the rules of the challenge.
+    */
+    public double roundUptoNearest5cents(double rawTax) {
+        double temp = rawTax;
+        temp = temp * 100;
+        temp = (int) temp % 10;
+        if (temp != 0) {
+            if (temp > 5) {
+                rawTax = rawTax * 100;
+                rawTax = (int) (rawTax / 10);
+                rawTax = (rawTax / 10) + .1;
+            } else if (temp < 5) {
+                double dif = (5 - temp) / 100;
+                rawTax = rawTax + dif;
+            }
+        }
+        System.out.println(rawTax);
+        return rawTax;
+
     }
 
 
