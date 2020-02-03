@@ -1,6 +1,6 @@
-/*Created by Jorge A Avalos on 2/1/2020
-Assigned by: LifeRay, Inc. Interviewer: Angelo Jefferson
-Description of Program:
+/*Created by Jorge A Avalos
+Date: 2/1/2020
+Description of Class:
 User inputs a text file so that both sales tax and import tax can be applied where applicable.
  */
 
@@ -45,7 +45,7 @@ public class CashierDriver {
             cartWorker checkoutCart = new cartWorker();
             List<product> finalCart = checkoutCart.cartBuilder();
             for (product product : finalCart) {
-                dialogueBox += (product.getProductQuantity() + " " + product.getProductName() + ": " + decimalFormat.format(product.getProductFinalSale()) + "\n");
+                dialogueBox += (product.getProductQuantity() + " " + product.getProductName() + ":  $" + decimalFormat.format(product.getProductFinalSale()) + "\n");
                 totalTax += product.getProductTax();
                 totalSale += product.getProductFinalSale();
             }
@@ -79,7 +79,7 @@ public class CashierDriver {
         FileWriter fileWriter = new FileWriter(file);
         bufferedWriter = new BufferedWriter(fileWriter);
         for (product product : prod) {
-            bufferedString += ((product.getProductQuantity() + " " + product.getProductName() + ": " + decimalFormat.format(product.getProductFinalSale()) + "\n"));
+            bufferedString += ((product.getProductQuantity() + " " + product.getProductName() + ":  $" + decimalFormat.format(product.getProductFinalSale()) + "\n"));
         }
         bufferedString += ("Total Tax: $" + decimalFormat.format(totalTax) + "\n");
         bufferedString += ("Total Sale: $" + decimalFormat.format(totalSale));

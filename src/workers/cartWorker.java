@@ -34,9 +34,7 @@ public class cartWorker {
             while ((rawProduct = bufferedReader.readLine().split(" ")) != null) {
                 String taxID = "";
                 product product = new product();
-
                 product.setProductQuantity(Integer.parseInt(rawProduct[0]));
-
                 product.setProductPrice(Double.parseDouble((rawProduct[rawProduct.length - 1])));
                 rawProduct = Arrays.copyOfRange(rawProduct, 1, rawProduct.length - 2);
                 product.setProductName(String.join(" ", rawProduct));
