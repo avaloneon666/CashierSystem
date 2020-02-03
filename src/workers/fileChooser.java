@@ -13,12 +13,9 @@ public class fileChooser {
 
     //fileOpen method allows the user to select the input file.
     public File fileOpen() {
-
-        String fileSource = "";
         JFileChooser chooser = new JFileChooser();
         int returnVal = chooser.showOpenDialog(null);
         if (returnVal == JFileChooser.APPROVE_OPTION) {
-            fileSource = chooser.getSelectedFile().getAbsolutePath();
             return chooser.getSelectedFile();
         } else {
             System.exit(0);
@@ -35,14 +32,13 @@ public class fileChooser {
         if (saveSelection == 1) {
             System.exit(0);
         } else if (saveSelection == 0) {
-            String fileSource = "";
             JFileChooser chooser = new JFileChooser();
 
             int returnVal = chooser.showSaveDialog(null);
             if (returnVal == JFileChooser.APPROVE_OPTION) {
-                fileSource = chooser.getSelectedFile().getAbsolutePath();
+                return chooser.getSelectedFile().getAbsolutePath();
             }
-            return chooser.getSelectedFile().getAbsolutePath();
+
         }
         return null;
     }
