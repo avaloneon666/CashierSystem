@@ -45,13 +45,13 @@ public class cartWorker {
             System.out.println("The file could not be found");
             cartBuilder();
         } catch (IOException | NullPointerException e) {
-            e.addSuppressed(e);
+
         } finally {
             if (bufferedReader != null) {
                 try {
                     bufferedReader.close();
                 } catch (IOException e) {
-                    e.addSuppressed(e);
+
                 }
 
             }
