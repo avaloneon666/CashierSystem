@@ -2,7 +2,7 @@
 Small Challenge Given By LifeRay, inc.
 Created By: Jorge A Avalos
 Date:2/1/2020
-Assigned by: LifeRay, Inc. Interviewer: Angelo Jefferson
+Assigned by: LifeRay, Inc. Interviewer: Angelo 
 Deadline: January 3, 2020 at 3:00 P.M.
 
 Main Class: CashierDriver.java
